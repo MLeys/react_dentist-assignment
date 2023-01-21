@@ -3,20 +3,34 @@ import React from 'react';
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Home from './components/Home/Home';
+import Contact from './components/Contact/Contact';
+import Procedures from './components/Procedures/Procedures';
+import { Route, Routes, Link, Navigate } from 'react-router-dom'
 
 function App() {
   
   return (
-    <div>
+    <>
       <nav>
-        <a href="/">Go to Home Page</a>
-        <a href="/procedures">See Our Procedures</a>
-        <a href="/contact">Contact Us!</a>
+        <a>
+          <Link to="/">Home</Link> 
+        </a>
+        <a><Link to="/contact">Contact Us!</Link></a>
+        
+        <Link to="/procedures">See Our Procedues</Link>
+
       </nav>
       <div>
-        <Home />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/procedures' element={<Procedures />} />
+          <Route path="*" element={<Navigate to='/' replace /> } />
+
+        </Routes>
+
       </div>
-    </div>
+    </>
 );
 }
 
